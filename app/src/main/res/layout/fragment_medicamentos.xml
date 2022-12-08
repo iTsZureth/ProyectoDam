@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Fragmentos.Medicamentosfrag">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recifilahisto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+    </androidx.recyclerview.widget.RecyclerView>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/textomitad"
+            android:layout_width="411dp"
+            android:layout_height="266dp"
+            android:alpha="0.25"
+            android:text="@string/no_hay_ning_n_registro"
+            android:textAlignment="center"
+            android:textSize="48sp"
+            android:textStyle="bold"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="TextContrastCheck"
+            tools:layout_editor_absoluteY="192dp" />
+
+        <Button
+            android:id="@+id/btañadirmed"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="44dp"
+            android:layout_height="49dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:shadowColor="#404040"
+            android:text="+"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="TouchTargetSizeCheck" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>
