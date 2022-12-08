@@ -34,6 +34,8 @@ import com.journeyapps.barcodescanner.BarcodeEncoder;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -108,7 +110,7 @@ public class Userfrag extends Fragment {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        String[] usuario = response.toString().split(",");
+                        String[] usuario = response.split(",");
                         editNom.setText(usuario[1]);
                         editEma.setText(usuario[2]);
                         editEdad.setText(usuario[3]);
@@ -197,37 +199,53 @@ public class Userfrag extends Fragment {
         modificar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                RequestQueue queue = Volley.newRequestQueue(vista.getContext());
-                String url = "http://"+urlreal+"/android_mysql/modificarusuario.php";
-                StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
-                        new Response.Listener<String>() {
-                            @Override
-                            public void onResponse(String response) {
-                                Toast.makeText(vista.getContext(), "Usuario modificado correctamente", Toast.LENGTH_LONG).show();
-                            }
-                        }, new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(vista.getContext(), "Error en la modificacion del medicamento", Toast.LENGTH_LONG).show();
-                    }
-                }) {
-                    @Override
-                    public Map<String, String> getParams() throws com.android.volley.AuthFailureError {
-                        Map<String, String> params = new HashMap<String, String>();
+                if(validarEmail(editEma.getText().toString())==true){
+                    RequestQueue queue = Volley.newRequestQueue(vista.getContext());
+                    String url = "http://"+urlreal+"/android_mysql/modificarusuario.php";
+                    StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
+                            new Response.Listener<String>() {
+                                @Override
+                                public void onResponse(String response) {
+                                    Toast.makeText(vista.getContext(), "Usuario modificado correctamente", Toast.LENGTH_LONG).show();
+                                }
+                            }, new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            Toast.makeText(vista.getContext(), "Error en la modificacion del medicamento", Toast.LENGTH_LONG).show();
+                        }
+                    }) {
+                        @Override
+                        public Map<String, String> getParams() throws com.android.volley.AuthFailureError {
+                            Map<String, String> params = new HashMap<String, String>();
 
-                        params.put("nombre", editNom.getText().toString());
-                        params.put("email", editEma.getText().toString());
-                        params.put("edad", editEdad.getText().toString());
-                        params.put("localidad", inloc.toString());
-                        params.put("id", id);
+                            params.put("nombre", editNom.getText().toString());
+                            params.put("email", editEma.getText().toString());
+                            params.put("edad", editEdad.getText().toString());
+                            params.put("localidad", inloc.toString());
+                            params.put("id", id);
 
-                        return params;
-                    }
-                };
-                queue.add(stringRequest);
+                            return params;
+                        }
+                    };
+                    queue.add(stringRequest);
+                }else{
+                    Toast.makeText(getActivity().getApplicationContext(),"El email no es válido",Toast.LENGTH_SHORT).show();
+
+                }
+
             }
         });
         return vista;
+    }
+
+    public boolean validarEmail(String email)
+    {
+        Pattern pattern;
+        Matcher matcher;
+        final String EMAIL_PATTERN = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+        pattern = Pattern.compile(EMAIL_PATTERN);
+        matcher = pattern.matcher(email);
+        return matcher.matches();
     }
 
 }
