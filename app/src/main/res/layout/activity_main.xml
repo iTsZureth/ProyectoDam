@@ -9,13 +9,14 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="174dp"
-        android:layout_height="163dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="105dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="75dp"
         android:layout_marginEnd="106dp"
         android:contentDescription="@string/todo"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logo1" />
@@ -48,33 +49,35 @@
 
     <EditText
         android:id="@+id/editcontra"
-        android:layout_width="237dp"
-        android:layout_height="46dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="101dp"
         android:background="@drawable/background"
         android:backgroundTint="#2F3F74B5"
+        android:drawableLeft="@drawable/ic_baseline_lock_24"
+        android:drawablePadding="10dp"
         android:ems="10"
         android:hint="@string/contrase_a"
         android:importantForAutofill="no"
         android:inputType="textPassword"
-        android:textColorLink="#3F74B5"
-        android:drawablePadding="10dp"
-        android:textSize="20sp"
-        android:textAlignment="viewStart"
-        android:drawableLeft="@drawable/ic_baseline_lock_24"
         android:paddingLeft="10dp"
+        android:textAlignment="viewStart"
+        android:textColorLink="#3F74B5"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.461"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editEmail"
-        tools:ignore="TouchTargetSizeCheck,TextContrastCheck,DuplicateSpeakableTextCheck" />
+        tools:ignore="TouchTargetSizeCheck,TextContrastCheck,DuplicateSpeakableTextCheck"
+        android:textColorHighlight="#3F74B5"
+        android:minHeight="48dp"/>
 
     <Button
         android:id="@+id/btregistro"
-        android:layout_width="167dp"
-        android:layout_height="50dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="120dp"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="124dp"
@@ -86,8 +89,8 @@
 
     <Button
         android:id="@+id/btlogin"
-        android:layout_width="167dp"
-        android:layout_height="50dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="120dp"
         android:layout_marginTop="39dp"
         android:layout_marginEnd="124dp"
@@ -101,8 +104,8 @@
 
     <TextView
         android:id="@+id/textlogin"
-        android:layout_width="294dp"
-        android:layout_height="39dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="19dp"
         android:gravity="center"
         android:text="@string/quiere_iniciar_cuenta_desde_la_cuenta_de_otro_movil_pulse_aqui"
